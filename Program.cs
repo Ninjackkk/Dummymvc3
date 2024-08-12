@@ -9,8 +9,6 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<ApplicationDbContext>(options=>options.UseSqlServer(builder.Configuration.GetConnectionString("dbconn")));// Adding services for connection
 
 var app = builder.Build();
-
-
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -28,6 +26,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Emp}/{action=AddEmp}/{id?}");
+    pattern: "{controller=Emp}/{action=ViewData}/{id?}");
 
 app.Run();

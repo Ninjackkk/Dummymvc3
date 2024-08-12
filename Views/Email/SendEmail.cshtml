@@ -1,0 +1,28 @@
+﻿@model Dummymvc3.Models.EmailViewModel
+
+<h2>Send Email</h2>
+
+@if (ViewBag.Message != null)
+{
+    <div>
+        <p>@ViewBag.Message</p>
+    </div>
+}
+<form asp-action="SendEmail" method="post">
+    <div>
+        <label asp-for="ToEmail"></label>
+        <input asp-for="ToEmail" />
+        <span asp-validation-for="ToEmail"></span>
+    </div>
+    <div>
+        <label asp-for="Subject"></label>
+        <input asp-for="Subject" />
+        <span asp-validation-for="Subject"></span>
+    </div>
+    <div>
+        <label asp-for="Message"></label>
+        <textarea asp-for="Message"></textarea>
+        <span asp-validation-for="Message"></span>
+    </div>
+    <button type="submit">Send Email</button>
+</form>
