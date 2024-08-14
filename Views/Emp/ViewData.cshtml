@@ -1,9 +1,8 @@
-﻿@model IEnumerable<Dummymvc3.Models.Emp>
+﻿@model List<Dummymvc3.Models.Emp>
 
 @{
     ViewData["Title"] = "ViewData";
 }
-
 
 <h1>ViewData</h1>
 
@@ -11,54 +10,52 @@
     <a asp-action="Create">Create New</a>
 </p>
 
+<!-- Search Form -->
+<form method="post" asp-action="Search" class="form-inline mb-3">
+    <div class="form-group mr-2">
+        <input type="text" name="name" class="form-control" placeholder="Search by Name" />
+    </div>
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
 <form method="post" asp-action="DeleteSelected">
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Select
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Salary)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Select</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Salary</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <input type="checkbox" name="Empbyid" value="@item.Id" />
+                    </td>
+                    <td>
+                        @item.Name
+                    </td>
+                    <td>
+                        @item.Email
+                    </td>
+                    <td>
+                        @item.Salary
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <button type="submit">Delete Selected</button>
 
 
+    <a asp-controller="Email"asp-action="SendEmail">Email</a>
 
-@foreach (var item in Model)
-{
-        <tr>
-            <td>
-               <input type="checkbox" name="Empbyid" id="Empbyid" value="@item.Id" />
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Salary)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-            <button type="submit">Delete Selected</button>
-
-
-
-    </tbody>
-</table>
 </form>

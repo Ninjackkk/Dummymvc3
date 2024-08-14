@@ -74,8 +74,9 @@ namespace Dummymvc3.Controllers
         public IActionResult Search(string name)
         {
             var data = db.emps.Where(a => a.Name.Contains(name)).ToList();
-            return View("ViewData", data); 
+            return View("ViewData", data);
         }
+
 
 
         public IActionResult DeleteSelected()
@@ -95,8 +96,5 @@ namespace Dummymvc3.Controllers
             return RedirectToAction("AddEmp");
 
         }
-
-
-
     }
 }
