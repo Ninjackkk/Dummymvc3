@@ -94,7 +94,6 @@ namespace Dummymvc3.Controllers
             }
             db.SaveChanges();
             return RedirectToAction("AddEmp");
-
         }
     }
 }

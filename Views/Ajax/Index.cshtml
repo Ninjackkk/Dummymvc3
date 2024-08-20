@@ -1,8 +1,5 @@
 ﻿
 
-
-
-
 <!-- Button trigger modal -->
 <button type="submit" class="btn btn-primary" id="btn1">
     Launch demo modal
@@ -33,22 +30,37 @@
                         <input type="text" class="form-control" name="salary" id="salary">
                     </div>
                   
-                </form>
-
-                
+                </form>        
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" id="savebtn" >Save changes</button>
+                <button type="button" class="btn btn-primary" id="updbtn">Update changes</button>
+
             </div>
         </div>
     </div>
 </div>
 
+<table class="table table-bordered table-hover">
 
+    <thead class="table-dark">
+        <tr>
+            <td>Id</td>
+            <td>Name</td>
+            <td>Email</td>
+            <td>Salary</td>
+            <td>Action</td>
 
+        </tr>
+    </thead>
 
+    <tbody id="tabledata">
 
+    </tbody>
+</table>
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script src="~/js/doc.js"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
