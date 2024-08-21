@@ -2,6 +2,7 @@
 using Dummymvc3.Data;
 using Dummymvc3.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Dummymvc3.Controllers
 {
@@ -45,15 +46,26 @@ namespace Dummymvc3.Controllers
             return Json(data);
         }
 
-        //[HttpPost]
-        //public IActionResult UpdateEmp(Emp e)
-        //{
-        //    db.emps.Update(e);
-        //    db.SaveChanges();
-        //    return Json(""); 
-        //}
+        [HttpPost]
+        public IActionResult UpdateCommit(Emp e)
+        {
+            var upd = db.emps.Find(e.Id);
+            upd.Name = e.Name;
+            upd.Email = e.Email;
+            upd.Salary = e.Salary;
+
+            db.emps.Update(upd);
+            db.SaveChanges();
+
+            return Json(upd);
+        }
 
 
-
+        public IActionResult SearchEmp(string sdata)
+        {
+            var data = db.emps.Where(x=>x.Name.Contains(sdata) || x.Email.Contains(sdata)||x.Salary.ToString().Contains(sdata)).ToList();
+            return Json(data);
+        }
     }
+
 }
