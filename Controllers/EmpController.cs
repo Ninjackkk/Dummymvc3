@@ -76,9 +76,6 @@ namespace Dummymvc3.Controllers
             var data = db.emps.Where(a => a.Name.Contains(name)).ToList();
             return View("ViewData", data);
         }
-
-
-
         public IActionResult DeleteSelected()
         {
             return View();

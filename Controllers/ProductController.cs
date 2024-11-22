@@ -21,7 +21,6 @@ namespace Dummymvc3.Controllers
             return View(data);
         }
 
-
         public IActionResult AddProduct()
         {
             return View();
