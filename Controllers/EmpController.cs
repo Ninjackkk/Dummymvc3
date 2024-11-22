@@ -3,7 +3,7 @@ using Dummymvc3.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Dummymvc3.Controllers
-{
+{//
     public class EmpController : Controller
     {
         private readonly ApplicationDbContext db;
